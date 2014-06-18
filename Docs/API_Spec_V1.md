@@ -93,4 +93,9 @@ Example:
 ```
 
 ### API REQUEST: Authenticate User
+
+- To Be Defined
+
 ### API REQUEST: Update/save Details
+
+- To Be Defined
