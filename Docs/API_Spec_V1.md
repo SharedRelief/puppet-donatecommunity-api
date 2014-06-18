@@ -1,3 +1,6 @@
+API SPEC V1 (INCOMPLETE)
+------------------------
+
 ### API REQUEST: Get donation types
 
 GET /API/v1/DonationTypes/
@@ -53,7 +56,8 @@ Example:
 
 ### API REQUEST: Find nearby donors/recipients
 
-POST: /API/v1/Search/[donors|recipients]/
+Donor Search: POST: /API/v1/Search/donors/
+Recipient Search: POST: /API/v1/Search/recipients/
 
 POSTDATA:
 ```json
