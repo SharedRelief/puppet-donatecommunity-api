@@ -56,8 +56,8 @@ Example:
 
 ### API REQUEST: Find nearby donors/recipients
 
-Donor Search: POST: /API/v1/Search/donors/
-Recipient Search: POST: /API/v1/Search/recipients/
+- Donor Search: POST: /API/v1/Search/donors/
+- Recipient Search: POST: /API/v1/Search/recipients/
 
 POSTDATA:
 ```json
