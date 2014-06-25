@@ -1,11 +1,9 @@
-Shared Relief API
------------------
+Puppet DonateCommunity API
+--------------------------
+
+Configures the DonateCommunity API server with Puppet
 
 ### ALPHA
-
-RESTful API backing the Shared Relief web app
-
-http://www.tunnelyou.com/2014/06/how-i-jump-started-my-community.html
 
 License & Authors
 -----------------
