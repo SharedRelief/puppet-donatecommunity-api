@@ -63,6 +63,10 @@ class dummyDonationTypes(restful.Resource):
 class dummySearch(restful.Resource):
    def post(self, search_type):
        arguments = request.json
+
+       if type(arguments) is not dict:
+           print "ERROR: POST data not a dict"
+           abort(400)
        
        # Verify required keys are present
        for key in [ "DonationID", "Distance", "curLat", "curLon"]:
@@ -144,7 +148,7 @@ def main():
     api = restful.Api(app)
     
     api.add_resource(dummyDonationTypes, '/API/v1/DonationTypes/')
-    api.add_resource(dummySearch, 'API/v1/Search/<string:search_type>')
+    api.add_resource(dummySearch, '/API/v1/Search/<string:search_type>')
 
     # DEBUG/DEV/TODO: Running in debug mode
     app.run(debug=True)
