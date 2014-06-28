@@ -148,7 +148,7 @@ def main():
     api = restful.Api(app)
     
     api.add_resource(dummyDonationTypes, '/API/v1/DonationTypes/')
-    api.add_resource(dummySearch, '/API/v1/Search/<string:search_type>')
+    api.add_resource(dummySearch, '/API/v1/Search/<string:search_type>/')
 
     # DEBUG/DEV/TODO: Running in debug mode
     app.run(debug=True)
