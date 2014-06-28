@@ -60,11 +60,91 @@ class dummyDonationTypes(restful.Resource):
                }, 
              ]
 
+class dummySearch(restful.Resource):
+   def post(self, search_type):
+       arguments = request.json
+       
+       # Verify required keys are present
+       for key in [ "DonationID", "Distance", "curLat", "curLon"]:
+           if not arguments.has_key(key):
+               print "ERROR: Missing argument %s" % key
+               abort(400)
+               
+        # Optional arguments
+       for key in [ "Subtypes"]:
+           if not arguments.has_key(key):
+               arguments[key] = None
+               
+       # Generate a dummy response
+       if search_type == 'recipients':
+           return [
+                    {
+                        "Name": "Dummy Donation Place 1",
+                        "DonationID": arguments['DonationID'],
+                        "Subtypes": arguments['Sybtypes'],
+                        "Address": "1234 Fake St\nDenver, CO",
+                        "Lat": 39.737567,
+                        "Lon": -104.984718,
+                        "Distance": 0,
+                        "Details": {
+                            "key1": "value1",
+                            "key2": "value2",
+                        },  
+                    },
+                    {
+                        "Name": "Dummy Donation Place 2",
+                        "DonationID": arguments['DonationID'],
+                        "Subtypes": arguments['Sybtypes'],
+                        "Address": "5678 Fake St\nDenver, CO",
+                        "Lat": 39.737567,
+                        "Lon": -104.984718,
+                        "Distance": 0,
+                        "Details": {
+                            "key1": "value1",
+                            "key2": "value2",
+                        },  
+                    },
+           ]
+       elif search_type == 'donors':
+           return [
+                    {
+                        "Name": "Generous Person 1",
+                        "DonationID": arguments['DonationID'],
+                        "Subtypes": arguments['Sybtypes'],
+                        "Address": "5432 Fake St\nDenver, CO",
+                        "Lat": 39.737567,
+                        "Lon": -104.984718,
+                        "Distance": 0,
+                        "Details": {
+                            "email": "someone@somedomain.com",
+                            "twitter": "@someone",
+                        },  
+                    },
+                    {
+                        "Name": "Generous Person 2",
+                        "DonationID": arguments['DonationID'],
+                        "Subtypes": arguments['Sybtypes'],
+                        "Address": None,
+                        "Lat": 39.737567,
+                        "Lon": -104.984718,
+                        "Distance": 0,
+                        "Details": {
+                            "email": "someoneelse@somedomain.com",
+                            "phone": "(303) 555-1234",
+                        },  
+                    },
+           ]
+       else:
+           print "ERROR: Unknown search criteria %s" %search_type
+           abort(404)
+
+
 def main():
     app = Flask(__name__)
     api = restful.Api(app)
     
     api.add_resource(dummyDonationTypes, '/API/v1/DonationTypes/')
+    api.add_resource(dummySearch, 'API/v1/Search/<string:search_type>')
 
     # DEBUG/DEV/TODO: Running in debug mode
     app.run(debug=True)
