@@ -85,7 +85,7 @@ class dummySearch(restful.Resource):
                     {
                         "Name": "Dummy Donation Place 1",
                         "DonationID": arguments['DonationID'],
-                        "Subtypes": arguments['Sybtypes'],
+                        "Subtypes": arguments['Subtypes'],
                         "Address": "1234 Fake St\nDenver, CO",
                         "Lat": 39.737567,
                         "Lon": -104.984718,
@@ -98,7 +98,7 @@ class dummySearch(restful.Resource):
                     {
                         "Name": "Dummy Donation Place 2",
                         "DonationID": arguments['DonationID'],
-                        "Subtypes": arguments['Sybtypes'],
+                        "Subtypes": arguments['Subtypes'],
                         "Address": "5678 Fake St\nDenver, CO",
                         "Lat": 39.737567,
                         "Lon": -104.984718,
@@ -114,7 +114,7 @@ class dummySearch(restful.Resource):
                     {
                         "Name": "Generous Person 1",
                         "DonationID": arguments['DonationID'],
-                        "Subtypes": arguments['Sybtypes'],
+                        "Subtypes": arguments['Subtypes'],
                         "Address": "5432 Fake St\nDenver, CO",
                         "Lat": 39.737567,
                         "Lon": -104.984718,
@@ -127,7 +127,7 @@ class dummySearch(restful.Resource):
                     {
                         "Name": "Generous Person 2",
                         "DonationID": arguments['DonationID'],
-                        "Subtypes": arguments['Sybtypes'],
+                        "Subtypes": arguments['Subtypes'],
                         "Address": None,
                         "Lat": 39.737567,
                         "Lon": -104.984718,
