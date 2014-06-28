@@ -1,6 +1,8 @@
 API SPEC V1 (INCOMPLETE)
 ------------------------
 
+POST data should be Content-Type: application/json.  Other formats wil yeild a 400.
+
 ### API REQUEST: Get donation types
 
 GET /API/v1/DonationTypes/
