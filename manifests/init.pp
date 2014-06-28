@@ -15,7 +15,6 @@
 # limitations under the License.
 
 class donatecommunity-api(
-  $manage_firewall = true,
   $install_dir = '/opt/donatecommunity'
   ) {
 
@@ -41,18 +40,6 @@ class donatecommunity-api(
     mode    => 755,
     source  => "puppet:///modules/donatecommunity-api/bin/donatecommunity-api.py",
     require => File["$install_dir/bin"],
-  }
-
-  # Open the firewall (ALPHA)
-  if $manage_firewall == true {
-    include firewall-config::base
-    
-    firewall { '99 allow 5000/TCP for vzsandboxapi from control server':
-      state   => ['NEW'],
-      dport   => '5000',
-      proto   => 'tcp',
-      action  => accept,
-    }
   }
 
 }
