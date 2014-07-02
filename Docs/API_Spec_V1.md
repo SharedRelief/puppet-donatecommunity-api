@@ -65,6 +65,8 @@ POSTDATA:
 ```json
 {
   "DonationID": 5,            # ID of the donation type
+                              # Can be omitted or Null if unset
+                              # Unset DonationID matches all
   "Subtypes": [ 202, 203 ],   # A list of applicable subtypes
                               # Subtype can be omitted or Null if unset
                               # Unset subtype on donation ID with subtypes matches all 
