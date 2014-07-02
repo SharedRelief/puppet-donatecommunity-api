@@ -69,13 +69,13 @@ class dummySearch(restful.Resource):
            abort(400)
        
        # Verify required keys are present
-       for key in [ "DonationID", "Distance", "curLat", "curLon"]:
+       for key in [ "Distance", "curLat", "curLon"]:
            if not arguments.has_key(key):
                print "ERROR: Missing argument %s" % key
                abort(400)
                
         # Optional arguments
-       for key in [ "Subtypes"]:
+       for key in [ "Subtypes", "DonationID" ]:
            if not arguments.has_key(key):
                arguments[key] = None
                
