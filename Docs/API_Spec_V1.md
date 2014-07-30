@@ -1,11 +1,11 @@
-API SPEC V1 (INCOMPLETE)
+API SPEC V0 (INCOMPLETE)
 ------------------------
 
 POST data should be Content-Type: application/json.  Other formats wil yeild a 400.
 
 ### API REQUEST: Get donation types
 
-GET /API/v1/DonationTypes/
+GET /API/v0/DonationTypes/
 
 Return Value: List of dictionaries of donation type details
 Donation Dict Schema:
@@ -58,8 +58,8 @@ Example:
 
 ### API REQUEST: Find nearby donors/recipients
 
-- Donor Search: POST: /API/v1/Search/donors/
-- Recipient Search: POST: /API/v1/Search/recipients/
+- Donor Search: POST: /API/v0/Search/donors/
+- Recipient Search: POST: /API/v0/Search/recipients/
 
 POSTDATA:
 ```json
