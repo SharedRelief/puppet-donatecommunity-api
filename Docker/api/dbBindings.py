@@ -19,7 +19,7 @@ class DonateCommunityDB(object):
 
     def _convert_id(self, row_dict):
         """Convert the Mongo _id field to a API friendly id value in a hash"""
-        row_dict['id'] = str(row_dict['_id'])
+        row_dict['ID'] = str(row_dict['_id'])
         row_dict.pop('_id')
         return row_dict
     
@@ -44,7 +44,7 @@ class DonateCommunityDB(object):
             # Add a unique ID to the subtypes
             if ret_row['Subtypes'] is not None:
                 for c in range(0, len(ret_row['Subtypes'])):
-                    ret_row['Subtypes'][c]['id'] = "%s.%s" % (ret_row['id'], c)
+                    ret_row['Subtypes'][c]['ID'] = "%s.%s" % (ret_row['ID'], c)
             ret_val.append(ret_row)
         return ret_val        
 
