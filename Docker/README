@@ -1,0 +1,16 @@
+SharedDB API Docker Work
+========================
+
+This is a work in progress repo, dockerizing the API.
+
+Very incomplete.
+
+Needs to be combined with the existing Puppet work, uploaded in an independent branch because TJNII needs to stop working in a vacuum.
+
+Containers:
+-----------
+
+- api: RESTful API
+- clisandbox: Test sandbox containing test utilities, inteneded to be run interactively
+- db: MongoDB container backing the API
+- testdb_loader: Loads test data into the DB container
