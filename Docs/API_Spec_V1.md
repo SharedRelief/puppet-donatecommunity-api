@@ -9,7 +9,7 @@ GET /API/v0/DonationTypes/
 
 Return Value: List of dictionaries of donation type details
 Donation Dict Schema:
-*  ID: Unique donation type ID, defined by backend
+*  ID: Unique donation type ID, defined by backend. (String)
 *  Title: Donation title/name string
 * Subtypes: List of donation sub qualifier dicts, Null on on sub qualifiers
    - ID: Unique donaiton subtype ID, defined by backend
@@ -17,42 +17,30 @@ Donation Dict Schema:
 
 Example:
 ```json
-[ { "ID": 1,
-    "Title": "volunteering",
-    "Subtypes": null }, 
-  { "ID": 2,
-    "Title": "Give Blood",
-    "Subtypes": [ 
-                { "ID": 101, "Title": "A" },
-                { "ID": 102, "Title": "A+" },
-		{ "ID": 103, "Title": "B+" },
-		{ "ID": 104, "Title": "B-" },
-		{ "ID": 105, "Title": "AB+" },
-		{ "ID": 106, "Title": "AB-" },
-		{ "ID": 107, "Title": "O+" },
-		{ "ID": 108, "Title": "O-" },
-		{ "ID": 109, "Title": "Unknown" },
-             ]
-  },
-  { "ID": 3,
-    "Title": "Donate Food",
-    "Subtypes": null 
-  },
-  { "ID": 4, 
-    "Title": "Donate Money",
-    "Subtypes": null 
-  },
-  { "ID": 5, 
-    "Title": "Donate Clothing",
-    "Subtypes": [
-                { "ID": 201, "Title": "Children's" },
-                { "ID": 202, "Title": "Mens's" },
-                { "ID": 203, "Title": "Women's" },
-              ]
-  },
-  { "ID": 6, 
-    "Title": "Donate Toys",
-  }, 
+[ 
+   {
+      "ID": "53d848aafc34db000172eb05"
+      "Title": "Donate Clothing",
+      "Subtypes": [
+         {   
+            "Title": "Children's",
+            "id": "53d848aafc34db000172eb05.0"
+         },
+         {   
+            "Title": "Mens's",
+            "id": "53d848aafc34db000172eb05.1"
+         },
+         {   
+            "Title": "Women's",
+            "id": "53d848aafc34db000172eb05.2"
+         }
+      ],
+   },
+   {   
+      "Title": "Donate Toys",
+      "ID": "53d848aafc34db000172eb06"
+      "Subtypes": null,
+   }
 ]
 ```
 
@@ -80,21 +68,45 @@ Return Value: List of dictionaries of matches
 
 Example:
 ```json
-[ {
-    "Name": "Salvation Army",              # Name of donor/recipient
-    "DonationID": 5,                       # Donation ID for this response
-    "Subtypes": [ 201, 202, 203 ],         # Subtypes offered/accepted
-    "Address": "1234 Fake St\nDenver, CO", # (String)
-    "Lat": 39.737567,                      # Latitude (Float)
-    "Lon": -104.984718,                    # Longitude (Float)
-    "Distance": 0,                         # Distance in miles (Int)
-    "Details": {                           # Arbitrary key value paring for details like hours, notes, etc.
-       "key1": "value1",
-       "key2": "value2",
-    },
-  }
+[
+   {
+      "Name": {
+         "FullName": "Savers Business", # Full, complete name of donor/recipient
+	 "ShortName": "Savers",         # Short name of donor/recipient, as they would like to be addressed
+                                        # Intended fo salutations in the UI, like ("Hi, %s!" % data['Name']['ShortName'])
+      },
+      "Type": "Business",               # Type of this donor/recipient.
+
+      "Address": {                      # Address hash
+         "Line1": "1234 Some Street",
+         "City":  "Littleton",
+         "State": "Colorado",
+         "Zipcode": 80120
+      }, 
+
+      "Distance": 0,   # Distance in miles (Int)  -1 for undefined (Missing GeoLoc Data)
+      "geoLocation": { # Hash of geolocation data
+         "Lat": 39.737567,   # Latitude (Float)
+         "Lon": -104.984718, # Longitude (Float)
+      },
+
+      "ID": "53d848aafc34db000172eb22",         # Unique donation type ID, defined by backend. (String)
+      "DonationID": "53d848aafc34db000172eb05", # Donation ID for this response
+      "Subtypes": ["53d848aafc34db000172eb05.0", "53d848aafc34db000172eb05.1", "53d848aafc34db000172eb05.2"], # List of subtypes accepted
+
+      "Email": null, 
+
+      "Details": { # Arbitrary key value paring for details like hours, notes, etc.
+         "key1": "value1",
+         "key2": "value2",
+      },
+   }
 ]
 ```
+
+### API REQUEST: Donor/Recipient types
+
+- To Be Defined
 
 ### API REQUEST: Authenticate User
 
