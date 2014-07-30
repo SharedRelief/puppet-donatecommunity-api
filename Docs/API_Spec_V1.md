@@ -1,6 +1,8 @@
 API SPEC V1 (INCOMPLETE)
 ------------------------
 
+POST data should be Content-Type: application/json.  Other formats wil yeild a 400.
+
 ### API REQUEST: Get donation types
 
 GET /API/v1/DonationTypes/
@@ -63,6 +65,8 @@ POSTDATA:
 ```json
 {
   "DonationID": 5,            # ID of the donation type
+                              # Can be omitted or Null if unset
+                              # Unset DonationID matches all
   "Subtypes": [ 202, 203 ],   # A list of applicable subtypes
                               # Subtype can be omitted or Null if unset
                               # Unset subtype on donation ID with subtypes matches all 
